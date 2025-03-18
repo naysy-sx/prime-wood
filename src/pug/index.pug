@@ -1,0 +1,356 @@
+doctype html
+html(lang="ru")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title Шоурумы | Prime Wood
+    link(rel="stylesheet", href="static/css/vendor.min.css")
+    link(rel="stylesheet", href="static/css/main.min.css")
+  
+  body
+    label#check(for="checker") Наложить макет
+    input#checker(type="checkbox")
+    .check
+
+    // Шапка сайта
+    header.header
+      .container
+        .header__wrapper.flex.align-center.justify-between
+          a.header__logo(href="/")
+            img.header__logo--desktop(src="static/images/logo.svg" alt="Prime Wood")
+            img.header__logo--mobile(src="static/images/logo-mobile.svg" alt="Prime Wood")
+          nav.header__nav
+            ul.header__menu.flex.align-center
+              li.header__menu-item
+                a.header__menu-link(href="/catalog") Каталог
+              li.header__menu-item
+                a.header__menu-link(href="/services") Услуги и сервисы
+              li.header__menu-item
+                a.header__menu-link(href="/about") О компании
+
+          
+          .header__right.flex.align-center
+            .header__contacts
+              a.header__phone(href="tel:+74953053591") +7 (495) 120-53-91
+            
+            .header__actions.flex.align-center
+              a.header__smart(href="#")
+                span.icon.icon-smart
+              a.header__search(href="#")
+                span.icon.icon-search
+              a.header__profile(href="#")
+                span.icon.icon-user
+              a.header__basket(href="#")
+                span.icon.icon-basket
+                span.header__cart-count 44
+              a.header__mobile-menu(href="#")
+                span.icon.icon-mobile-menu
+    
+    // Хлебные крошки
+    .breadcrumbs
+      .container
+        ul.breadcrumbs__list.flex.align-center.list-reset
+          li.breadcrumbs__item
+            a.breadcrumbs__link(href="/") Главная
+          li.breadcrumbs__item
+            a.breadcrumbs__link(href="/showrooms") Шоурумы
+          li.breadcrumbs__item
+            span.breadcrumbs__current Шоурумы PW
+    
+    // Основной контент
+    main.main
+      // Секция с заголовком и описанием
+      section.intro
+        .intro__wrapper
+          .container
+            .flex.align-center
+              article.intro
+                h1.intro__title Шоурумы
+                p.intro__text Приглашаем Вас посмотреть каждую коллекцию образцов мебели для гостиной, спальни, прихожей, детской и кабинета. Мы поможем с выбором мебели и стиля, а также обсудим, организуем выезд и доставку, проконтролируем и примем мебель.              
+              .intro__map
+                img(src="/ia/map.png" alt="Карта расположения шоурумов в Москве")
+      
+      // Секция шоурума Автозаводская
+      section.showroom
+        .showroom__wrapper
+          .container
+            article.showroom-card
+              h2.showroom-card__title Шоурум Автозаводская
+
+              .flex.align-center              
+                .showroom-card__info
+                  p.showroom-card__address Адрес: г. Москва, ул. Автозаводская, ТЦ Ривьера, 1 этаж
+                  p.showroom-card__phone Телефон: 
+                    a(href="tel:+74959783104") +7 (495) 978-31-04
+                  p.showroom-card__hours Время работы: с 9:00 до 20:00                  
+                  a.showroom-card__map-link(href="#") Посмотреть на карте                
+                .showroom-card__collections
+                  h3.showroom-card__subtitle Представлены коллекции:
+                  ul.showroom-card__list.list-reset
+                    li.showroom-card__item Мебель для руководителей
+                    li.showroom-card__item Офисные кресла
+                    li.showroom-card__item Офисные шкафы и стулья
+                    li.showroom-card__item Офисные диваны
+                    li.showroom-card__item Бухгалтерские шкафы
+              
+              .showroom-card__gallery.flex.align-center
+                figure.showroom-card__gallery-item
+                  img.showroom-card__image(src="static/images/showroom-auto-1.png" alt="Шоурум Автозаводская - интерьер")
+                
+                figure.showroom-card__gallery-item
+                  img.showroom-card__image(src="static/images/showroom-auto-2.png" alt="Шоурум Автозаводская - интерьер")
+                
+                figure.showroom-card__gallery-item
+                  img.showroom-card__image(src="static/images/showroom-auto-3.png" alt="Шоурум Автозаводская - интерьер")
+                
+                figure.showroom-card__gallery-item
+                  img.showroom-card__image(src="static/images/showroom-auto-4.png" alt="Шоурум Автозаводская - интерьер")
+              
+              .showroom-card__action
+                a.button.button--primary(href="#appointment") Записаться в шоурум
+      
+      // Секция шоурума Москва СИТИ
+      section.showroom
+        .showroom__wrapper
+          .container
+            article.showroom-card
+              h2.showroom-card__title Шоурум Москва СИТИ
+
+              .flex.align-center              
+                .showroom-card__info
+                  p.showroom-card__address Адрес: г. Москва, Пресненская набережная, 6с2, башня Империя, 30 этаж
+                  p.showroom-card__phone Телефон: 
+                    a(href="tel:+74997037838") +7 (499) 703-78-38
+                  p.showroom-card__hours Время работы: с 9:00 до 18:00
+                  
+                  a.showroom-card__map-link(href="#") Посмотреть на карте
+                
+                .showroom-card__collections
+                  h3.showroom-card__subtitle Представлены коллекции:
+                  ul.showroom-card__list.list-reset
+                    li.showroom-card__item Мебель для руководителей
+                    li.showroom-card__item Офисные кресла
+                    li.showroom-card__item Офисные шкафы и стулья
+                    li.showroom-card__item Офисные диваны
+                    li.showroom-card__item Бухгалтерские шкафы
+              
+              .showroom-card__gallery.flex.align-center
+                figure.showroom-card__gallery-item
+                  img.showroom-card__image(src="static/images/showroom-auto-1.png" alt="Шоурум Москва СИТИ - интерьер")
+                
+                figure.showroom-card__gallery-item
+                  img.showroom-card__image(src="static/images/showroom-auto-2.png" alt="Шоурум Москва СИТИ - интерьер")
+                
+                figure.showroom-card__gallery-item
+                  img.showroom-card__image(src="static/images/showroom-auto-3.png" alt="Шоурум Москва СИТИ - интерьер")
+                
+                figure.showroom-card__gallery-item
+                  img.showroom-card__image(src="static/images/showroom-auto-4.png" alt="Шоурум Москва СИТИ - интерьер")
+              
+              .showroom-card__action
+                a.button.button--primary(href="#appointment") Записаться в шоурум
+      
+      // Секция шоурума в ТЦ ROOMER
+      section.showroom
+        .showroom__wrapper
+          .container
+            article.showroom-card
+              h2.showroom-card__title 
+                | Шоурум в ТЦ ROOMER 
+                span.showroom-card__tag Новинка
+
+              .flex.align-center              
+                .showroom-card__info
+                  p.showroom-card__address Адрес: г. Москва, ул. Ленинская Слобода, д.26
+                  p.showroom-card__phone Телефон: 
+                    a(href="tel:+74952767387") +7 (495) 276-73-87
+                  p.showroom-card__hours Время работы: с 9:00 до 20:00                  
+                  a.showroom-card__map-link(href="#") Посмотреть на карте
+                
+                .showroom-card__collections
+                  h3.showroom-card__subtitle Представлены коллекции:
+                  ul.showroom-card__list.list-reset
+                    li.showroom-card__item Мебель для руководителей
+                    li.showroom-card__item Офисные кресла
+                    li.showroom-card__item Офисные шкафы и стулья
+                    li.showroom-card__item Офисные диваны
+                    li.showroom-card__item Бухгалтерские шкафы
+                
+              .showroom-card__gallery.flex.align-center
+                figure.showroom-card__gallery-item
+                  img.showroom-card__image(src="static/images/showroom-auto-1.png" alt="Шоурум в ТЦ ROOMER - интерьер")
+                
+                figure.showroom-card__gallery-item
+                  img.showroom-card__image(src="static/images/showroom-auto-2.png" alt="Шоурум в ТЦ ROOMER - интерьер")
+                
+                figure.showroom-card__gallery-item
+                  img.showroom-card__image(src="static/images/showroom-auto-3.png" alt="Шоурум в ТЦ ROOMER - интерьер")
+                
+                figure.showroom-card__gallery-item
+                  img.showroom-card__image(src="static/images/showroom-auto-4.png" alt="Шоурум в ТЦ ROOMER - интерьер")
+              
+              .showroom-card__action
+                a.button.button--primary(href="#appointment") Записаться в шоурум
+      
+      // Секция с преимуществами
+      section.advantages
+        .advantages__wrapper
+          .container
+            ul.advantages__list.flex.align-center.list-reset
+              li.advantages__item
+                .advantages__icon
+                  img(src="static/images/advantages-1.svg" alt="")
+                p.advantages__title Рейтинг 5/5
+              
+              li.advantages__item
+                .advantages__icon
+                  img(src="static/images/advantages-2.svg" alt="")
+                p.advantages__title 3-D дизайн пространства
+              
+              li.advantages__item
+                .advantages__icon
+                  img(src="static/images/advantages-3.svg" alt="")
+                p.advantages__title Поддержка офисной мебели
+              
+              li.advantages__item
+                .advantages__icon
+                  img(src="static/images/advantages-4.svg" alt="")
+                p.advantages__title Быстрая доставка
+              
+              li.advantages__item
+                .advantages__icon
+                  img(src="static/images/advantages-5.svg" alt="")
+                p.advantages__title Аккредитация банков
+              
+              li.advantages__item
+                .advantages__icon
+                  img(src="static/images/advantages-6.svg" alt="")
+                p.advantages__title Дополнительные скидки
+      
+      // Секция с формой записи
+      section.appointment#appointment
+        .appointment__wrapper
+          .container
+            article.appointment-form
+              h2.appointment-form__title Записаться в шоурум
+              
+              form.appointment-form__form(action="#" method="POST")
+                .appointment-form__field
+                  input.appointment-form__input(type="text" name="name" placeholder="Имя*" required)
+                
+                .appointment-form__row.flex
+                  .appointment-form__field.appointment-form__field--half
+                    input.appointment-form__input(type="tel" name="phone" placeholder="+7 (999) 999-99-99" required)
+                  
+                  .appointment-form__field.appointment-form__field--half
+                    input.appointment-form__input(type="email" name="email" placeholder="Электронная почта")
+                
+                .appointment-form__action
+                  button.button.button--primary(type="submit") Отправить
+                
+                p.appointment-form__policy Нажимая на кнопку, вы соглашаетесь с нашей политикой по обработке персональных данных
+    
+    // Подвал сайта
+    footer.footer
+      .container
+        .footer__wrapper
+          .footer__columns.flex
+            .footer__column
+              h3.footer__title Каталог
+              ul.footer__menu.list-reset
+                li.footer__menu-item
+                  a.footer__menu-link(href="#") Мебель для персонала
+                li.footer__menu-item
+                  a.footer__menu-link(href="#") Кресла и стулья
+                li.footer__menu-item
+                  a.footer__menu-link(href="#") Подбор решения
+                li.footer__menu-item
+                  a.footer__menu-link(href="#") Офисные диваны
+                li.footer__menu-item
+                  a.footer__menu-link(href="#") Ресепшены
+                li.footer__menu-item
+                  a.footer__menu-link(href="#") Металлическая мебель
+                li.footer__menu-item
+                  a.footer__menu-link(href="#") Весь каталог
+                  span.icon-arrow
+            
+            .footer__column
+              h3.footer__title Услуги и сервисы
+              ul.footer__menu.list-reset
+                li.footer__menu-item
+                  a.footer__menu-link(href="#") Дизайн-проект офиса
+                li.footer__menu-item
+                  a.footer__menu-link(href="#") Мебель на заказ
+                li.footer__menu-item
+                  a.footer__menu-link(href="#") Для юр. лиц и гос. учреждений
+                li.footer__menu-item
+                  a.footer__menu-link(href="#") Торг. офис. мебель
+                li.footer__menu-item
+                  a.footer__menu-link(href="#") Производственное оборудование
+                li.footer__menu-item
+                  a.footer__menu-link(href="#") Электрооборудование
+                li.footer__menu-item
+                  a.footer__menu-link(href="#") Постоянный менеджмент
+                li.footer__menu-item
+                  a.footer__menu-link(href="#") Доставка и установка
+            
+            .footer__column
+              h3.footer__title О компании
+              ul.footer__menu.list-reset
+                li.footer__menu-item
+                  a.footer__menu-link(href="#") Договор и оферта
+                li.footer__menu-item
+                  a.footer__menu-link(href="#") Реквизиты компании
+                li.footer__menu-item
+                  a.footer__menu-link(href="#") Правила по Кэшбэк
+                li.footer__menu-item
+                  a.footer__menu-link(href="#") Политика конфиденциальности
+                li.footer__menu-item
+                  a.footer__menu-link(href="#") Товар и сервис мебели
+                li.footer__menu-item
+                  a.footer__menu-link(href="#") Выставочные образцы
+                li.footer__menu-item
+                  a.footer__menu-link(href="#") Обучение
+                li.footer__menu-item
+                  a.footer__menu-link(href="#") Новости
+                li.footer__menu-item
+                  a.footer__menu-link(href="#") Вакансии
+            
+            .footer__column
+              h3.footer__title Ваш город
+              .footer__city
+                span.icon-location
+                span.footer__city-name Москва
+              
+              h3.footer__title.footer__title--contacts Контакты
+              .footer__contacts
+                a.footer__phone(href="tel:+74953053591") +7 (495) 305-35-91
+                a.footer__email(href="mailto:info@prime-wood.ru") info@prime-wood.ru
+                a.footer__whatsapp(href="https://wa.me/74953053591") WhatsApp
+              
+              .footer__social
+                h3.footer__title Подписывайтесь
+                .footer__social-links
+                  a.footer__social-link.footer__social-link--fb(href="#" target="_blank" rel="noopener noreferrer")
+                    span.icon-facebook
+                  a.footer__social-link.footer__social-link--vk(href="#" target="_blank" rel="noopener noreferrer")
+                    span.icon-vk
+                  a.footer__social-link.footer__social-link--in(href="#" target="_blank" rel="noopener noreferrer")
+                    span.icon-instagram
+              
+              .footer__rating
+                span.footer__rating-score 5.0
+                .footer__rating-stars
+                  span.icon-star
+                  span.icon-star
+                  span.icon-star
+                  span.icon-star
+                  span.icon-star
+                p.footer__rating-text Рейтинг на Яндекс.Маркет
+        
+        .footer__bottom
+          p.footer__copyright © 2004-2024 Компания «Prime Wood» - офисная мебель в Москве
+          p.footer__rights Все права защищены, информация является собственностью Prime Wood, не является публичной офертой.
+          p.footer__policy Вы соглашаетесь с условиями политики в отношении обработки персональных данных и пользовательского соглашения (смайлик чел, который надел очки и читает) при любой форме обращения на сайте.
+
+    script(src="static/js/main.min.js")
