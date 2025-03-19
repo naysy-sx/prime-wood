@@ -250,7 +250,7 @@ html(lang="ru")
             article.showroom-card
               h2.showroom-card__title Шоурум Москва СИТИ
 
-              .flex.align-center              
+              .showroom-card__row.flex
                 .showroom-card__info
                   p.showroom-card__address Адрес: г. Москва, Пресненская набережная, 6с2, башня Империя, 30 этаж
                   p.showroom-card__phone Телефон: 
@@ -299,7 +299,7 @@ html(lang="ru")
                 | Шоурум в ТЦ ROOMER 
                 span.showroom-card__tag Скоро открытие
 
-              .flex.align-center              
+              .showroom-card__row.flex       
                 .showroom-card__info
                   p.showroom-card__address Адрес: г. Москва, ул. Ленинская Слобода, д.26
                   p.showroom-card__phone Телефон: 
@@ -378,23 +378,21 @@ html(lang="ru")
         .appointment__wrapper
           .container
             article.appointment-form
-              h2.appointment-form__title Записаться в шоурум
-              
+              h2.appointment-form__title Записаться в шоурум              
               form.appointment-form__form(action="#" method="POST")
                 .appointment-form__field
                   input.appointment-form__input(type="text" name="name" placeholder="Имя*" required)
+
+                .appointment-form__field
+                  input.appointment-form__input(type="tel" name="phone" placeholder="+7 (999) 999-99-99" id="phone" required)
                 
-                .appointment-form__row.flex
-                  .appointment-form__field.appointment-form__field--half
-                    input.appointment-form__input(type="tel" name="phone" placeholder="+7 (999) 999-99-99" required)
-                  
-                  .appointment-form__field.appointment-form__field--half
-                    input.appointment-form__input(type="email" name="email" placeholder="Электронная почта")
+                .appointment-form__field
+                  input.appointment-form__input(type="email" name="email" placeholder="Электронная почта")
                 
                 .appointment-form__action
                   button.button.button--primary(type="submit") Отправить
                 
-                p.appointment-form__policy Нажимая на кнопку, вы соглашаетесь с нашей политикой по обработке персональных данных
+                p.appointment-form__policy Нажимая на кнопку, вы подтверждаете свое согласие на обработку персональных данных.
     
     // Подвал сайта
     footer.footer
@@ -407,11 +405,15 @@ html(lang="ru")
                 li.footer__menu-item
                   a.footer__menu-link(href="#") Мебель для персонала
                 li.footer__menu-item
+                  a.footer__menu-link(href="#") Кабинеты руководителей
+                li.footer__menu-item
                   a.footer__menu-link(href="#") Кресла и стулья
                 li.footer__menu-item
-                  a.footer__menu-link(href="#") Подбор решения
+                  a.footer__menu-link(href="#") Переговорные столы
                 li.footer__menu-item
                   a.footer__menu-link(href="#") Офисные диваны
+                li.footer__menu-item
+                  a.footer__menu-link(href="#") Домашний офис
                 li.footer__menu-item
                   a.footer__menu-link(href="#") Ресепшены
                 li.footer__menu-item
@@ -422,81 +424,110 @@ html(lang="ru")
             
             .footer__column
               h3.footer__title Услуги и сервисы
-              ul.footer__menu.list-reset
+              ul.footer__menu.footer__menu--large.list-reset
                 li.footer__menu-item
                   a.footer__menu-link(href="#") Дизайн-проект офиса
                 li.footer__menu-item
                   a.footer__menu-link(href="#") Мебель на заказ
                 li.footer__menu-item
-                  a.footer__menu-link(href="#") Для юр. лиц и гос. учреждений
+                  a.footer__menu-link(href="#") Для гос.структур
                 li.footer__menu-item
-                  a.footer__menu-link(href="#") Торг. офис. мебель
+                  a.footer__menu-link(href="#") Тест драйв мебели
                 li.footer__menu-item
-                  a.footer__menu-link(href="#") Производственное оборудование
+                  a.footer__menu-link(href="#") Презентационное оборудование
                 li.footer__menu-item
-                  a.footer__menu-link(href="#") Электрооборудование
+                  a.footer__menu-link(href="#") Реконфигурация офиса
                 li.footer__menu-item
-                  a.footer__menu-link(href="#") Постоянный менеджмент
+                  a.footer__menu-link(href="#") Проектный менеджмент
                 li.footer__menu-item
-                  a.footer__menu-link(href="#") Доставка и установка
+                  a.footer__menu-link(href="#") Дизайнерам и архитекторам
+                li.footer__menu-item
+                  a.footer__menu-link(href="#") Дистрибьюция
+                li.footer__menu-item
+                  a.footer__menu-link(href="#") Доставка и сборка
+                li.footer__menu-item
+                  a.footer__menu-link(href="#") Проектный менеджмент
+                li.footer__menu-item
+                  a.footer__menu-link(href="#") Премиум из Китая
+                li.footer__menu-item
+                  a.footer__menu-link(href="#") Офисное оборудование
+                li.footer__menu-item
+                  a.footer__menu-link(href="#") Trade in старой мебели
+                li.footer__menu-item
+                  a.footer__menu-link(href="#") Релокация офиса
+                li.footer__menu-item
+                  a.footer__menu-link(href="#") Европейские фабрики
+                li.footer__menu-item
+                  a.footer__menu-link(href="#") Брокерам, риелторам, застройщикам
+                li.footer__menu-item
+                  a.footer__menu-link(href="#") Архитектурное бюро
             
             .footer__column
               h3.footer__title О компании
               ul.footer__menu.list-reset
                 li.footer__menu-item
-                  a.footer__menu-link(href="#") Договор и оферта
+                  a.footer__menu-link(href="#") О нас
                 li.footer__menu-item
-                  a.footer__menu-link(href="#") Реквизиты компании
+                  a.footer__menu-link(href="#") Наша команда
                 li.footer__menu-item
-                  a.footer__menu-link(href="#") Правила по Кэшбэк
-                li.footer__menu-item
-                  a.footer__menu-link(href="#") Политика конфиденциальности
-                li.footer__menu-item
-                  a.footer__menu-link(href="#") Товар и сервис мебели
-                li.footer__menu-item
-                  a.footer__menu-link(href="#") Выставочные образцы
-                li.footer__menu-item
-                  a.footer__menu-link(href="#") Обучение
+                  a.footer__menu-link(href="#") Наши проекты
                 li.footer__menu-item
                   a.footer__menu-link(href="#") Новости
                 li.footer__menu-item
-                  a.footer__menu-link(href="#") Вакансии
+                  a.footer__menu-link(href="#") Отзывы
+                li.footer__menu-item
+                  a.footer__menu-link(href="#") Партерам
+                li.footer__menu-item
+                  a.footer__menu-link(href="#") Шоурумы
+                li.footer__menu-item
+                  a.footer__menu-link(href="#") Контакты
             
             .footer__column
               h3.footer__title Ваш город
               .footer__city
-                span.icon-location
+                span.icon.icon-location
                 span.footer__city-name Москва
               
               h3.footer__title.footer__title--contacts Контакты
               .footer__contacts
-                a.footer__phone(href="tel:+74953053591") +7 (495) 305-35-91
-                a.footer__email(href="mailto:info@prime-wood.ru") info@prime-wood.ru
-                a.footer__whatsapp(href="https://wa.me/74953053591") WhatsApp
+                a.footer__phone(href="tel:+74953053591") 
+                  span.icon.icon-phone
+                  | +7 (495) 120-53-91
+                a.footer__email(href="mailto:info@prime-wood.ru") 
+                  span.icon.icon-email
+                  | info@prime-wood.ru
+                a.footer__whatsapp(href="https://wa.me/74953053591") 
+                  span.icon.icon-whatsapp
+                  | Написать в WatsApp
               
               .footer__social
                 h3.footer__title Подписывайтесь
                 .footer__social-links
                   a.footer__social-link.footer__social-link--fb(href="#" target="_blank" rel="noopener noreferrer")
-                    span.icon-facebook
+                    span.icon.icon-telegram
                   a.footer__social-link.footer__social-link--vk(href="#" target="_blank" rel="noopener noreferrer")
-                    span.icon-vk
+                    span.icon.icon-vk
                   a.footer__social-link.footer__social-link--in(href="#" target="_blank" rel="noopener noreferrer")
-                    span.icon-instagram
+                    span.icon.icon-dzen
               
-              .footer__rating
-                span.footer__rating-score 5.0
-                .footer__rating-stars
-                  span.icon-star
-                  span.icon-star
-                  span.icon-star
-                  span.icon-star
-                  span.icon-star
-                p.footer__rating-text Рейтинг на Яндекс.Маркет
+
         
         .footer__bottom
-          p.footer__copyright © 2004-2024 Компания «Prime Wood» - офисная мебель в Москве
-          p.footer__rights Все права защищены, информация является собственностью Prime Wood, не является публичной офертой.
+          .flex.align-center.justify-between
+            .footer__row-col
+              p.footer__copyright © 2004-2024 Компания «Prime Wood» - офисная мебель в Москве
+              p.footer__rights Все права защищены, информация является собственностью Prime Wood, не является публичной офертой.
+            .footer__row-col
+              .footer__rating
+                span.icon.icon-yandex
+                span.footer__rating-score 5.0
+                .footer__rating-stars
+                  span.icon.icon-star
+                  span.icon.icon-star
+                  span.icon.icon-star
+                  span.icon.icon-star
+                  span.icon.icon-star
+                p.footer__rating-text Рейтинг организации на Яндексе
           p.footer__policy Вы соглашаетесь с условиями политики в отношении обработки персональных данных и пользовательского соглашения (смайлик чел, который надел очки и читает) при любой форме обращения на сайте.
     script(src="static/js/vendor.min.js")
     script(src="static/js/main.min.js")

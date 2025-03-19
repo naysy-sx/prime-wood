@@ -219,7 +219,7 @@
           <div class="container">
             <article class="showroom-card">
               <h2 class="showroom-card__title">Шоурум Москва СИТИ</h2>
-              <div class="flex align-center">             
+              <div class="showroom-card__row flex">
                 <div class="showroom-card__info">
                   <p class="showroom-card__address">Адрес: г. Москва, Пресненская набережная, 6с2, башня Империя, 30 этаж</p>
                   <p class="showroom-card__phone">Телефон: <a href="tel:+74997037838">+7 (499) 703-78-38</a></p>
@@ -255,7 +255,7 @@
             <article class="showroom-card">
               <h2 class="showroom-card__title">
                  Шоурум в ТЦ ROOMER <span class="showroom-card__tag">Скоро открытие</span></h2>
-              <div class="flex align-center">             
+              <div class="showroom-card__row flex">      
                 <div class="showroom-card__info">
                   <p class="showroom-card__address">Адрес: г. Москва, ул. Ленинская Слобода, д.26</p>
                   <p class="showroom-card__phone">Телефон: <a href="tel:+74952767387">+7 (495) 276-73-87</a></p>
@@ -321,23 +321,21 @@
         <div class="appointment__wrapper">
           <div class="container">
             <article class="appointment-form">
-              <h2 class="appointment-form__title">Записаться в шоурум</h2>
+              <h2 class="appointment-form__title">Записаться в шоурум              </h2>
               <form class="appointment-form__form" action="#" method="POST">
                 <div class="appointment-form__field">
                   <input class="appointment-form__input" type="text" name="name" placeholder="Имя*" required>
                 </div>
-                <div class="appointment-form__row flex">
-                  <div class="appointment-form__field appointment-form__field--half">
-                    <input class="appointment-form__input" type="tel" name="phone" placeholder="+7 (999) 999-99-99" required>
-                  </div>
-                  <div class="appointment-form__field appointment-form__field--half">
-                    <input class="appointment-form__input" type="email" name="email" placeholder="Электронная почта">
-                  </div>
+                <div class="appointment-form__field">
+                  <input class="appointment-form__input" type="tel" name="phone" placeholder="+7 (999) 999-99-99" id="phone" required>
+                </div>
+                <div class="appointment-form__field">
+                  <input class="appointment-form__input" type="email" name="email" placeholder="Электронная почта">
                 </div>
                 <div class="appointment-form__action">
                   <button class="button button--primary" type="submit">Отправить</button>
                 </div>
-                <p class="appointment-form__policy">Нажимая на кнопку, вы соглашаетесь с нашей политикой по обработке персональных данных</p>
+                <p class="appointment-form__policy">Нажимая на кнопку, вы подтверждаете свое согласие на обработку персональных данных.</p>
               </form>
             </article>
           </div>
@@ -353,9 +351,11 @@
               <h3 class="footer__title">Каталог</h3>
               <ul class="footer__menu list-reset">
                 <li class="footer__menu-item"><a class="footer__menu-link" href="#">Мебель для персонала</a></li>
+                <li class="footer__menu-item"><a class="footer__menu-link" href="#">Кабинеты руководителей</a></li>
                 <li class="footer__menu-item"><a class="footer__menu-link" href="#">Кресла и стулья</a></li>
-                <li class="footer__menu-item"><a class="footer__menu-link" href="#">Подбор решения</a></li>
+                <li class="footer__menu-item"><a class="footer__menu-link" href="#">Переговорные столы</a></li>
                 <li class="footer__menu-item"><a class="footer__menu-link" href="#">Офисные диваны</a></li>
+                <li class="footer__menu-item"><a class="footer__menu-link" href="#">Домашний офис</a></li>
                 <li class="footer__menu-item"><a class="footer__menu-link" href="#">Ресепшены</a></li>
                 <li class="footer__menu-item"><a class="footer__menu-link" href="#">Металлическая мебель</a></li>
                 <li class="footer__menu-item"><a class="footer__menu-link" href="#">Весь каталог</a><span class="icon-arrow"></span></li>
@@ -363,50 +363,65 @@
             </div>
             <div class="footer__column">
               <h3 class="footer__title">Услуги и сервисы</h3>
-              <ul class="footer__menu list-reset">
+              <ul class="footer__menu footer__menu--large list-reset">
                 <li class="footer__menu-item"><a class="footer__menu-link" href="#">Дизайн-проект офиса</a></li>
                 <li class="footer__menu-item"><a class="footer__menu-link" href="#">Мебель на заказ</a></li>
-                <li class="footer__menu-item"><a class="footer__menu-link" href="#">Для юр. лиц и гос. учреждений</a></li>
-                <li class="footer__menu-item"><a class="footer__menu-link" href="#">Торг. офис. мебель</a></li>
-                <li class="footer__menu-item"><a class="footer__menu-link" href="#">Производственное оборудование</a></li>
-                <li class="footer__menu-item"><a class="footer__menu-link" href="#">Электрооборудование</a></li>
-                <li class="footer__menu-item"><a class="footer__menu-link" href="#">Постоянный менеджмент</a></li>
-                <li class="footer__menu-item"><a class="footer__menu-link" href="#">Доставка и установка</a></li>
+                <li class="footer__menu-item"><a class="footer__menu-link" href="#">Для гос.структур</a></li>
+                <li class="footer__menu-item"><a class="footer__menu-link" href="#">Тест драйв мебели</a></li>
+                <li class="footer__menu-item"><a class="footer__menu-link" href="#">Презентационное оборудование</a></li>
+                <li class="footer__menu-item"><a class="footer__menu-link" href="#">Реконфигурация офиса</a></li>
+                <li class="footer__menu-item"><a class="footer__menu-link" href="#">Проектный менеджмент</a></li>
+                <li class="footer__menu-item"><a class="footer__menu-link" href="#">Дизайнерам и архитекторам</a></li>
+                <li class="footer__menu-item"><a class="footer__menu-link" href="#">Дистрибьюция</a></li>
+                <li class="footer__menu-item"><a class="footer__menu-link" href="#">Доставка и сборка</a></li>
+                <li class="footer__menu-item"><a class="footer__menu-link" href="#">Проектный менеджмент</a></li>
+                <li class="footer__menu-item"><a class="footer__menu-link" href="#">Премиум из Китая</a></li>
+                <li class="footer__menu-item"><a class="footer__menu-link" href="#">Офисное оборудование</a></li>
+                <li class="footer__menu-item"><a class="footer__menu-link" href="#">Trade in старой мебели</a></li>
+                <li class="footer__menu-item"><a class="footer__menu-link" href="#">Релокация офиса</a></li>
+                <li class="footer__menu-item"><a class="footer__menu-link" href="#">Европейские фабрики</a></li>
+                <li class="footer__menu-item"><a class="footer__menu-link" href="#">Брокерам, риелторам, застройщикам</a></li>
+                <li class="footer__menu-item"><a class="footer__menu-link" href="#">Архитектурное бюро</a></li>
               </ul>
             </div>
             <div class="footer__column">
               <h3 class="footer__title">О компании</h3>
               <ul class="footer__menu list-reset">
-                <li class="footer__menu-item"><a class="footer__menu-link" href="#">Договор и оферта</a></li>
-                <li class="footer__menu-item"><a class="footer__menu-link" href="#">Реквизиты компании</a></li>
-                <li class="footer__menu-item"><a class="footer__menu-link" href="#">Правила по Кэшбэк</a></li>
-                <li class="footer__menu-item"><a class="footer__menu-link" href="#">Политика конфиденциальности</a></li>
-                <li class="footer__menu-item"><a class="footer__menu-link" href="#">Товар и сервис мебели</a></li>
-                <li class="footer__menu-item"><a class="footer__menu-link" href="#">Выставочные образцы</a></li>
-                <li class="footer__menu-item"><a class="footer__menu-link" href="#">Обучение</a></li>
+                <li class="footer__menu-item"><a class="footer__menu-link" href="#">О нас</a></li>
+                <li class="footer__menu-item"><a class="footer__menu-link" href="#">Наша команда</a></li>
+                <li class="footer__menu-item"><a class="footer__menu-link" href="#">Наши проекты</a></li>
                 <li class="footer__menu-item"><a class="footer__menu-link" href="#">Новости</a></li>
-                <li class="footer__menu-item"><a class="footer__menu-link" href="#">Вакансии</a></li>
+                <li class="footer__menu-item"><a class="footer__menu-link" href="#">Отзывы</a></li>
+                <li class="footer__menu-item"><a class="footer__menu-link" href="#">Партерам</a></li>
+                <li class="footer__menu-item"><a class="footer__menu-link" href="#">Шоурумы</a></li>
+                <li class="footer__menu-item"><a class="footer__menu-link" href="#">Контакты</a></li>
               </ul>
             </div>
             <div class="footer__column">
               <h3 class="footer__title">Ваш город</h3>
-              <div class="footer__city"><span class="icon-location"></span><span class="footer__city-name">Москва</span></div>
+              <div class="footer__city"><span class="icon icon-location"></span><span class="footer__city-name">Москва</span></div>
               <h3 class="footer__title footer__title--contacts">Контакты</h3>
-              <div class="footer__contacts"><a class="footer__phone" href="tel:+74953053591">+7 (495) 305-35-91</a><a class="footer__email" href="mailto:info@prime-wood.ru">info@prime-wood.ru</a><a class="footer__whatsapp" href="https://wa.me/74953053591">WhatsApp</a></div>
+              <div class="footer__contacts"><a class="footer__phone" href="tel:+74953053591"> <span class="icon icon-phone"></span>+7 (495) 120-53-91</a><a class="footer__email" href="mailto:info@prime-wood.ru"> <span class="icon icon-email"></span>info@prime-wood.ru</a><a class="footer__whatsapp" href="https://wa.me/74953053591"> <span class="icon icon-whatsapp"></span>Написать в WatsApp</a></div>
               <div class="footer__social">
                 <h3 class="footer__title">Подписывайтесь</h3>
-                <div class="footer__social-links"><a class="footer__social-link footer__social-link--fb" href="#" target="_blank" rel="noopener noreferrer"><span class="icon-facebook"></span></a><a class="footer__social-link footer__social-link--vk" href="#" target="_blank" rel="noopener noreferrer"><span class="icon-vk"></span></a><a class="footer__social-link footer__social-link--in" href="#" target="_blank" rel="noopener noreferrer"><span class="icon-instagram"></span></a></div>
-              </div>
-              <div class="footer__rating"><span class="footer__rating-score">5.0</span>
-                <div class="footer__rating-stars"><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span></div>
-                <p class="footer__rating-text">Рейтинг на Яндекс.Маркет</p>
+                <div class="footer__social-links"><a class="footer__social-link footer__social-link--fb" href="#" target="_blank" rel="noopener noreferrer"><span class="icon icon-telegram"></span></a><a class="footer__social-link footer__social-link--vk" href="#" target="_blank" rel="noopener noreferrer"><span class="icon icon-vk"></span></a><a class="footer__social-link footer__social-link--in" href="#" target="_blank" rel="noopener noreferrer"><span class="icon icon-dzen"></span></a></div>
               </div>
             </div>
           </div>
         </div>
         <div class="footer__bottom">
-          <p class="footer__copyright">© 2004-2024 Компания «Prime Wood» - офисная мебель в Москве</p>
-          <p class="footer__rights">Все права защищены, информация является собственностью Prime Wood, не является публичной офертой.</p>
+          <div class="flex align-center justify-between">
+            <div class="footer__row-col">
+              <p class="footer__copyright">© 2004-2024 Компания «Prime Wood» - офисная мебель в Москве</p>
+              <p class="footer__rights">Все права защищены, информация является собственностью Prime Wood, не является публичной офертой.</p>
+            </div>
+            <div class="footer__row-col">
+              <div class="footer__rating"><span class="icon icon-yandex"></span><span class="footer__rating-score">5.0</span>
+                <div class="footer__rating-stars"><span class="icon icon-star"></span><span class="icon icon-star"></span><span class="icon icon-star"></span><span class="icon icon-star"></span><span class="icon icon-star"></span></div>
+                <p class="footer__rating-text">Рейтинг организации на Яндексе</p>
+              </div>
+            </div>
+          </div>
           <p class="footer__policy">Вы соглашаетесь с условиями политики в отношении обработки персональных данных и пользовательского соглашения (смайлик чел, который надел очки и читает) при любой форме обращения на сайте.</p>
         </div>
       </div>

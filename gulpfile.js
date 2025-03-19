@@ -93,6 +93,7 @@ export function js() {
     'node_modules/jquery/dist/jquery.min.js',
     './src/js/aos.js',
     './src/js/fancybox.umd.js',
+    './src/js/imask.js',
     './src/js/swiper-bundle.min.js'
   ])
     .pipe(plumber({ errorHandler: notify.onError("Ошибка в JS вендорах: <%= error.message %>") }))
