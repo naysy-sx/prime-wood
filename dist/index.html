@@ -3,6 +3,23 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Метатеги для SEO-->
+    <meta name="description" content="Описание сайта Шоурумы | Prime Wood">
+    <meta name="keywords" content="Шоурумы">
+    <meta name="author" content="Шоурумы | Prime Wood">
+    <meta name="robots" content="index, follow">
+    <!-- Метатеги для социальных сетей-->
+    <meta property="og:title" content="Шоурумы | Prime Wood">
+    <meta property="og:description" content="Описание сайта Шоурумы | Prime Wood">
+    <meta property="og:image" content="URL_TO_IMAGE">
+    <meta property="og:url" content="URL_TO_SITE">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Шоурумы | Prime Wood">
+    <meta name="twitter:description" content="Описание сайта Шоурумы | Prime Wood">
+    <meta name="twitter:image" content="URL_TO_IMAGE">
+    <meta name="google-site-verification" content="YOUR_GOOGLE_SITE_VERIFICATION_CODE">
+    <meta name="yandex-verification" content="YOUR_YANDEX_VERIFICATION_CODE">
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=2ac0f895-95d9-4309-b7a3-1bdbc3d40433&amp;lang=ru_RU"></script>
     <title>Шоурумы | Prime Wood</title>
     <link rel="stylesheet" href="static/css/vendor.min.css">
     <link rel="stylesheet" href="static/css/main.min.css">
@@ -34,8 +51,9 @@
       <div class="container">
         <ul class="breadcrumbs__list flex align-center list-reset">
           <li class="breadcrumbs__item"><a class="breadcrumbs__link" href="/">Главная</a></li>
-          <li class="breadcrumbs__item"><a class="breadcrumbs__link" href="/showrooms">Шоурумы</a></li>
-          <li class="breadcrumbs__item"><span class="breadcrumbs__current">Шоурумы PW</span></li>
+          <li class="breadcrumbs__item"><a class="breadcrumbs__link" href="/showrooms">О компании</a></li>
+          <li class="breadcrumbs__item"><a class="breadcrumbs__link" href="/showrooms">Наши проекты</a></li>
+          <li class="breadcrumbs__item"><span class="breadcrumbs__current">СИЭНПИ РУС</span></li>
         </ul>
       </div>
     </div>
@@ -45,12 +63,117 @@
       <section class="intro">
         <div class="intro__wrapper">
           <div class="container">
-            <div class="flex align-center">
-              <article class="intro">
+            <div class="intro__row flex align-center">
+              <article class="intro__article">
                 <h1 class="intro__title">Шоурумы</h1>
-                <p class="intro__text">Приглашаем Вас посмотреть каждую коллекцию образцов мебели для гостиной, спальни, прихожей, детской и кабинета. Мы поможем с выбором мебели и стиля, а также обсудим, организуем выезд и доставку, проконтролируем и примем мебель.              </p>
+                <p class="intro__text">Приглашаем Вас посмотреть вживую коллекции офисной мебели для персонала, кабинеты для руководителя, офисные диваны, офисные кресла и стулья, а также обсудить эргономику вашего офисного пространства в наших шоурумах</p>
               </article>
-              <div class="intro__map"><img src="/ia/map.png" alt="Карта расположения шоурумов в Москве"></div>
+              <div class="intro__map">
+                <div id="map"></div>
+              </div>
+              <script>
+                ymaps.ready(function () {
+                  var myMap = new ymaps.Map("map", {
+                    center: [55.652004, 37.617734],
+                    zoom: 10,
+                    controls: ["zoomControl"],
+                  });
+                
+                  MyIconContentLayout = ymaps.templateLayoutFactory.createClass(
+                    '<div style="color: #FFFFFF; font-weight: bold;">$[properties.iconContent]</div>'
+                  ),
+                  myMap.behaviors.disable("scrollZoom");
+                
+                  function checkWindowSize() {
+                    if (window.innerWidth < 1200) {
+                      myMap.behaviors.disable("drag");
+                      // Также отключаем мультитач
+                      myMap.behaviors.disable("multiTouch");
+                    } else {
+                      myMap.behaviors.enable("drag");
+                      myMap.behaviors.enable("multiTouch");
+                    }
+                  }
+                
+                  checkWindowSize();
+                
+                  window.addEventListener("resize", checkWindowSize);
+                  PW1 = new ymaps.Placemark([55.713671, 37.672744], {
+                      hintContent: 'Офис и шоурум Автозаводская',
+                      balloonContent: 'г. Москва, 1-я улица Машиностроения, 10<br>Работаем пн-пт с 8:00 до 20:00',
+                      iconContent: ''
+                  }, {
+                      // Опции.
+                      // Необходимо указать данный тип макета.
+                      iconLayout: 'default#imageWithContent',
+                      // Своё изображение иконки метки.
+                      iconImageHref: 'static/images/marker-new.png',
+                      // Размеры метки.
+                      iconImageSize: [48, 48],
+                      // Смещение левого верхнего угла иконки относительно
+                      // её "ножки" (точки привязки).
+                      iconImageOffset: [-24, -24],
+                      // Смещение слоя с содержимым относительно слоя с картинкой.
+                      //iconContentOffset: [15, 15],
+                      // Макет содержимого.
+                      iconContentLayout: MyIconContentLayout
+                  });
+                
+                  PW2 = new ymaps.Placemark([55.748179, 37.540245], {
+                      hintContent: 'Офис и шоурум Москва-Сити',
+                      balloonContent: 'г. Москва, Пресненская набережная, 6с2, <br>Башня Империя, 50 этаж<br>Работаем пн-пт с 9:00 до 19:00',
+                      iconContent: ''
+                  }, {
+                      // Опции.
+                      // Необходимо указать данный тип макета.
+                      iconLayout: 'default#imageWithContent',
+                      // Своё изображение иконки метки.
+                      iconImageHref: 'static/images/marker-new.png',
+                      // Размеры метки.
+                      iconImageSize: [48, 48],
+                      iconImageOffset: [-24, -24],
+                      // Макет содержимого.
+                      iconContentLayout: MyIconContentLayout
+                  });
+                  
+                  PW3 = new ymaps.Placemark([55.526740, 37.754197], {
+                      hintContent: 'Склад самовывоза в Москве',
+                      balloonContent: 'Московская область, Каширское шоссе, 31-й километр, 241, <br>Работаем пн-пт с 9:30 до 18:30',
+                      iconContent: ''
+                  }, {
+                      // Опции.
+                      // Необходимо указать данный тип макета.
+                      iconLayout: 'default#imageWithContent',
+                      // Своё изображение иконки метки.
+                      iconImageHref: 'static/images/marker-new.png',
+                      // Размеры метки.
+                      iconImageSize: [48, 48],
+                      iconImageOffset: [-24, -24],
+                      // Макет содержимого.
+                      iconContentLayout: MyIconContentLayout
+                  });
+                  
+                  PW4 = new ymaps.Placemark([55.710100, 37.655770], {
+                      hintContent: 'Шоурум в ТЦ ROOMER',
+                      balloonContent: 'г. Москва, ул. Ленинская Слобода, 26, <br>Работаем пн-вс с 9:00 до 20:00',
+                      iconContent: ''
+                  }, {
+                      // Опции.
+                      // Необходимо указать данный тип макета.
+                      iconLayout: 'default#imageWithContent',
+                      // Своё изображение иконки метки.
+                      iconImageHref: 'static/images/marker-new.png',
+                      // Размеры метки.
+                      iconImageSize: [48, 48],
+                      iconImageOffset: [-24, -24],
+                      // Макет содержимого.
+                      iconContentLayout: MyIconContentLayout
+                  });
+                
+                  myMap.geoObjects.add(PW1).add(PW2).add(PW3).add(PW4);;
+                });
+                
+              </script>
             </div>
           </div>
         </div>
@@ -61,28 +184,28 @@
           <div class="container">
             <article class="showroom-card">
               <h2 class="showroom-card__title">Шоурум Автозаводская</h2>
-              <div class="flex align-center">             
+              <div class="showroom-card__row flex">
                 <div class="showroom-card__info">
-                  <p class="showroom-card__address">Адрес: г. Москва, ул. Автозаводская, ТЦ Ривьера, 1 этаж</p>
-                  <p class="showroom-card__phone">Телефон: <a href="tel:+74959783104">+7 (495) 978-31-04</a></p>
-                  <p class="showroom-card__hours">Время работы: с 9:00 до 20:00                  </p><a class="showroom-card__map-link" href="#">Посмотреть на карте                </a>
+                  <p class="showroom-card__address"> <span>Адрес: </span>г. Москва, 1-я улица улица Машиностроения, 10 </p>
+                  <p class="showroom-card__phone"> <span>Телефон: </span><a href="tel:+74959783104">+7 (495) 374-93-04</a></p>
+                  <p class="showroom-card__hours"> <span>Время работы: </span>пн-пт с 8:00 до 20:00</p><a class="showroom-card__map-link" href="#map">Посмотреть на карте                </a>
                 </div>
                 <div class="showroom-card__collections">
                   <h3 class="showroom-card__subtitle">Представлены коллекции:</h3>
                   <ul class="showroom-card__list list-reset">
-                    <li class="showroom-card__item">Мебель для руководителей</li>
+                    <li class="showroom-card__item">Мебель для руководителя</li>
                     <li class="showroom-card__item">Офисные кресла</li>
                     <li class="showroom-card__item">Офисные шкафы и стулья</li>
                     <li class="showroom-card__item">Офисные диваны</li>
-                    <li class="showroom-card__item">Бухгалтерские шкафы</li>
+                    <li class="showroom-card__item">Сопутствующие товары</li>
                   </ul>
                 </div>
               </div>
               <div class="showroom-card__gallery flex align-center">
-                <figure class="showroom-card__gallery-item"><img class="showroom-card__image" src="static/images/showroom-auto-1.png" alt="Шоурум Автозаводская - интерьер"></figure>
-                <figure class="showroom-card__gallery-item"><img class="showroom-card__image" src="static/images/showroom-auto-2.png" alt="Шоурум Автозаводская - интерьер"></figure>
-                <figure class="showroom-card__gallery-item"><img class="showroom-card__image" src="static/images/showroom-auto-3.png" alt="Шоурум Автозаводская - интерьер"></figure>
-                <figure class="showroom-card__gallery-item"><img class="showroom-card__image" src="static/images/showroom-auto-4.png" alt="Шоурум Автозаводская - интерьер"></figure>
+                <figure class="showroom-card__gallery-item"><a class="showroom-card__gallery-link" data-fancybox data-src="static/images/showroom-auto-1.png"><img class="showroom-card__image" src="static/images/showroom-auto-1.png" alt="Шоурум Автозаводская - интерьер"></a></figure>
+                <figure class="showroom-card__gallery-item"><a class="showroom-card__gallery-link" data-fancybox data-src="static/images/showroom-auto-2.png"><img class="showroom-card__image" src="static/images/showroom-auto-2.png" alt="Шоурум Автозаводская - интерьер"></a></figure>
+                <figure class="showroom-card__gallery-item"><a class="showroom-card__gallery-link" data-fancybox data-src="static/images/showroom-auto-3.png"><img class="showroom-card__image" src="static/images/showroom-auto-3.png" alt="Шоурум Автозаводская - интерьер"></a></figure>
+                <figure class="showroom-card__gallery-item"><a class="showroom-card__gallery-link" data-fancybox data-src="static/images/showroom-auto-4.png"><img class="showroom-card__image" src="static/images/showroom-auto-4.png" alt="Шоурум Автозаводская - интерьер"></a></figure>
               </div>
               <div class="showroom-card__action"><a class="button button--primary" href="#appointment">Записаться в шоурум</a></div>
             </article>
@@ -113,10 +236,10 @@
                 </div>
               </div>
               <div class="showroom-card__gallery flex align-center">
-                <figure class="showroom-card__gallery-item"><img class="showroom-card__image" src="static/images/showroom-auto-1.png" alt="Шоурум Москва СИТИ - интерьер"></figure>
-                <figure class="showroom-card__gallery-item"><img class="showroom-card__image" src="static/images/showroom-auto-2.png" alt="Шоурум Москва СИТИ - интерьер"></figure>
-                <figure class="showroom-card__gallery-item"><img class="showroom-card__image" src="static/images/showroom-auto-3.png" alt="Шоурум Москва СИТИ - интерьер"></figure>
-                <figure class="showroom-card__gallery-item"><img class="showroom-card__image" src="static/images/showroom-auto-4.png" alt="Шоурум Москва СИТИ - интерьер"></figure>
+                <figure class="showroom-card__gallery-item"><a class="showroom-card__gallery-link" data-fancybox data-src="static/images/showroom-auto-1.png"><img class="showroom-card__image" src="static/images/showroom-auto-1.png" alt="Шоурум Автозаводская - интерьер"></a></figure>
+                <figure class="showroom-card__gallery-item"><a class="showroom-card__gallery-link" data-fancybox data-src="static/images/showroom-auto-2.png"><img class="showroom-card__image" src="static/images/showroom-auto-2.png" alt="Шоурум Автозаводская - интерьер"></a></figure>
+                <figure class="showroom-card__gallery-item"><a class="showroom-card__gallery-link" data-fancybox data-src="static/images/showroom-auto-3.png"><img class="showroom-card__image" src="static/images/showroom-auto-3.png" alt="Шоурум Автозаводская - интерьер"></a></figure>
+                <figure class="showroom-card__gallery-item"><a class="showroom-card__gallery-link" data-fancybox data-src="static/images/showroom-auto-4.png"><img class="showroom-card__image" src="static/images/showroom-auto-4.png" alt="Шоурум Автозаводская - интерьер"></a></figure>
               </div>
               <div class="showroom-card__action"><a class="button button--primary" href="#appointment">Записаться в шоурум</a></div>
             </article>
@@ -148,10 +271,10 @@
                 </div>
               </div>
               <div class="showroom-card__gallery flex align-center">
-                <figure class="showroom-card__gallery-item"><img class="showroom-card__image" src="static/images/showroom-auto-1.png" alt="Шоурум в ТЦ ROOMER - интерьер"></figure>
-                <figure class="showroom-card__gallery-item"><img class="showroom-card__image" src="static/images/showroom-auto-2.png" alt="Шоурум в ТЦ ROOMER - интерьер"></figure>
-                <figure class="showroom-card__gallery-item"><img class="showroom-card__image" src="static/images/showroom-auto-3.png" alt="Шоурум в ТЦ ROOMER - интерьер"></figure>
-                <figure class="showroom-card__gallery-item"><img class="showroom-card__image" src="static/images/showroom-auto-4.png" alt="Шоурум в ТЦ ROOMER - интерьер"></figure>
+                <figure class="showroom-card__gallery-item"><a class="showroom-card__gallery-link" data-fancybox data-src="static/images/showroom-auto-1.png"><img class="showroom-card__image" src="static/images/showroom-auto-1.png" alt="Шоурум Автозаводская - интерьер"></a></figure>
+                <figure class="showroom-card__gallery-item"><a class="showroom-card__gallery-link" data-fancybox data-src="static/images/showroom-auto-2.png"><img class="showroom-card__image" src="static/images/showroom-auto-2.png" alt="Шоурум Автозаводская - интерьер"></a></figure>
+                <figure class="showroom-card__gallery-item"><a class="showroom-card__gallery-link" data-fancybox data-src="static/images/showroom-auto-3.png"><img class="showroom-card__image" src="static/images/showroom-auto-3.png" alt="Шоурум Автозаводская - интерьер"></a></figure>
+                <figure class="showroom-card__gallery-item"><a class="showroom-card__gallery-link" data-fancybox data-src="static/images/showroom-auto-4.png"><img class="showroom-card__image" src="static/images/showroom-auto-4.png" alt="Шоурум Автозаводская - интерьер"></a></figure>
               </div>
               <div class="showroom-card__action"><a class="button button--primary" href="#appointment">Записаться в шоурум</a></div>
             </article>
@@ -286,6 +409,7 @@
         </div>
       </div>
     </footer>
+    <script src="static/js/vendor.min.js"></script>
     <script src="static/js/main.min.js"></script>
   </body>
 </html>

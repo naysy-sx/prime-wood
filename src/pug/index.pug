@@ -3,6 +3,25 @@ html(lang="ru")
   head
     meta(charset="UTF-8")
     meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    // Метатеги для SEO
+    meta(name='description' content='Описание сайта Шоурумы | Prime Wood')
+    meta(name='keywords' content='Шоурумы')
+    meta(name='author' content='Шоурумы | Prime Wood')
+    meta(name='robots' content='index, follow')
+    // Метатеги для социальных сетей
+    meta(property='og:title' content='Шоурумы | Prime Wood')
+    meta(property='og:description' content='Описание сайта Шоурумы | Prime Wood')
+    meta(property='og:image' content='URL_TO_IMAGE')
+    meta(property='og:url' content='URL_TO_SITE')
+    meta(name='twitter:card' content='summary_large_image')
+    meta(name='twitter:title' content='Шоурумы | Prime Wood')
+    meta(name='twitter:description' content='Описание сайта Шоурумы | Prime Wood')
+    meta(name='twitter:image' content='URL_TO_IMAGE')
+
+    meta(name='google-site-verification' content='YOUR_GOOGLE_SITE_VERIFICATION_CODE')
+    meta(name='yandex-verification' content='YOUR_YANDEX_VERIFICATION_CODE')
+    script(src='https://api-maps.yandex.ru/2.1/?apikey=2ac0f895-95d9-4309-b7a3-1bdbc3d40433&lang=ru_RU')
+
     title Шоурумы | Prime Wood
     link(rel="stylesheet", href="static/css/vendor.min.css")
     link(rel="stylesheet", href="static/css/main.min.css")
@@ -53,9 +72,11 @@ html(lang="ru")
           li.breadcrumbs__item
             a.breadcrumbs__link(href="/") Главная
           li.breadcrumbs__item
-            a.breadcrumbs__link(href="/showrooms") Шоурумы
+            a.breadcrumbs__link(href="/showrooms") О компании
           li.breadcrumbs__item
-            span.breadcrumbs__current Шоурумы PW
+            a.breadcrumbs__link(href="/showrooms") Наши проекты
+          li.breadcrumbs__item
+            span.breadcrumbs__current СИЭНПИ РУС
     
     // Основной контент
     main.main
@@ -63,12 +84,114 @@ html(lang="ru")
       section.intro
         .intro__wrapper
           .container
-            .flex.align-center
-              article.intro
+            .intro__row.flex.align-center
+              article.intro__article
                 h1.intro__title Шоурумы
-                p.intro__text Приглашаем Вас посмотреть каждую коллекцию образцов мебели для гостиной, спальни, прихожей, детской и кабинета. Мы поможем с выбором мебели и стиля, а также обсудим, организуем выезд и доставку, проконтролируем и примем мебель.              
+                p.intro__text Приглашаем Вас посмотреть вживую коллекции офисной мебели для персонала, кабинеты для руководителя, офисные диваны, офисные кресла и стулья, а также обсудить эргономику вашего офисного пространства в наших шоурумах
               .intro__map
-                img(src="/ia/map.png" alt="Карта расположения шоурумов в Москве")
+                #map
+
+              script.
+                ymaps.ready(function () {
+                  var myMap = new ymaps.Map("map", {
+                    center: [55.652004, 37.617734],
+                    zoom: 10,
+                    controls: ["zoomControl"],
+                  });
+
+                  MyIconContentLayout = ymaps.templateLayoutFactory.createClass(
+                    '<div style="color: #FFFFFF; font-weight: bold;">$[properties.iconContent]</div>'
+                  ),
+                  myMap.behaviors.disable("scrollZoom");
+
+                  function checkWindowSize() {
+                    if (window.innerWidth < 1200) {
+                      myMap.behaviors.disable("drag");
+                      // Также отключаем мультитач
+                      myMap.behaviors.disable("multiTouch");
+                    } else {
+                      myMap.behaviors.enable("drag");
+                      myMap.behaviors.enable("multiTouch");
+                    }
+                  }
+
+                  checkWindowSize();
+
+                  window.addEventListener("resize", checkWindowSize);
+                  PW1 = new ymaps.Placemark([55.713671, 37.672744], {
+                      hintContent: 'Офис и шоурум Автозаводская',
+                      balloonContent: 'г. Москва, 1-я улица Машиностроения, 10<br>Работаем пн-пт с 8:00 до 20:00',
+                      iconContent: ''
+                  }, {
+                      // Опции.
+                      // Необходимо указать данный тип макета.
+                      iconLayout: 'default#imageWithContent',
+                      // Своё изображение иконки метки.
+                      iconImageHref: 'static/images/marker-new.png',
+                      // Размеры метки.
+                      iconImageSize: [48, 48],
+                      // Смещение левого верхнего угла иконки относительно
+                      // её "ножки" (точки привязки).
+                      iconImageOffset: [-24, -24],
+                      // Смещение слоя с содержимым относительно слоя с картинкой.
+                      //iconContentOffset: [15, 15],
+                      // Макет содержимого.
+                      iconContentLayout: MyIconContentLayout
+                  });
+              
+                  PW2 = new ymaps.Placemark([55.748179, 37.540245], {
+                      hintContent: 'Офис и шоурум Москва-Сити',
+                      balloonContent: 'г. Москва, Пресненская набережная, 6с2, <br>Башня Империя, 50 этаж<br>Работаем пн-пт с 9:00 до 19:00',
+                      iconContent: ''
+                  }, {
+                      // Опции.
+                      // Необходимо указать данный тип макета.
+                      iconLayout: 'default#imageWithContent',
+                      // Своё изображение иконки метки.
+                      iconImageHref: 'static/images/marker-new.png',
+                      // Размеры метки.
+                      iconImageSize: [48, 48],
+                      iconImageOffset: [-24, -24],
+                      // Макет содержимого.
+                      iconContentLayout: MyIconContentLayout
+                  });
+                  
+                  PW3 = new ymaps.Placemark([55.526740, 37.754197], {
+                      hintContent: 'Склад самовывоза в Москве',
+                      balloonContent: 'Московская область, Каширское шоссе, 31-й километр, 241, <br>Работаем пн-пт с 9:30 до 18:30',
+                      iconContent: ''
+                  }, {
+                      // Опции.
+                      // Необходимо указать данный тип макета.
+                      iconLayout: 'default#imageWithContent',
+                      // Своё изображение иконки метки.
+                      iconImageHref: 'static/images/marker-new.png',
+                      // Размеры метки.
+                      iconImageSize: [48, 48],
+                      iconImageOffset: [-24, -24],
+                      // Макет содержимого.
+                      iconContentLayout: MyIconContentLayout
+                  });
+                  
+                  PW4 = new ymaps.Placemark([55.710100, 37.655770], {
+                      hintContent: 'Шоурум в ТЦ ROOMER',
+                      balloonContent: 'г. Москва, ул. Ленинская Слобода, 26, <br>Работаем пн-вс с 9:00 до 20:00',
+                      iconContent: ''
+                  }, {
+                      // Опции.
+                      // Необходимо указать данный тип макета.
+                      iconLayout: 'default#imageWithContent',
+                      // Своё изображение иконки метки.
+                      iconImageHref: 'static/images/marker-new.png',
+                      // Размеры метки.
+                      iconImageSize: [48, 48],
+                      iconImageOffset: [-24, -24],
+                      // Макет содержимого.
+                      iconContentLayout: MyIconContentLayout
+                  });
+              
+                  myMap.geoObjects.add(PW1).add(PW2).add(PW3).add(PW4);;
+                });
       
       // Секция шоурума Автозаводская
       section.showroom
@@ -77,35 +200,41 @@ html(lang="ru")
             article.showroom-card
               h2.showroom-card__title Шоурум Автозаводская
 
-              .flex.align-center              
+              .showroom-card__row.flex
                 .showroom-card__info
-                  p.showroom-card__address Адрес: г. Москва, ул. Автозаводская, ТЦ Ривьера, 1 этаж
-                  p.showroom-card__phone Телефон: 
-                    a(href="tel:+74959783104") +7 (495) 978-31-04
-                  p.showroom-card__hours Время работы: с 9:00 до 20:00                  
-                  a.showroom-card__map-link(href="#") Посмотреть на карте                
+                  p.showroom-card__address 
+                    span Адрес: 
+                    | г. Москва, 1-я улица улица Машиностроения, 10 
+                  p.showroom-card__phone 
+                    span Телефон: 
+                    a(href="tel:+74959783104") +7 (495) 374-93-04
+                  p.showroom-card__hours 
+                    span Время работы: 
+                    | пн-пт с 8:00 до 20:00
+                  a.showroom-card__map-link(href="#map") Посмотреть на карте                
                 .showroom-card__collections
                   h3.showroom-card__subtitle Представлены коллекции:
                   ul.showroom-card__list.list-reset
-                    li.showroom-card__item Мебель для руководителей
+                    li.showroom-card__item Мебель для руководителя
                     li.showroom-card__item Офисные кресла
                     li.showroom-card__item Офисные шкафы и стулья
                     li.showroom-card__item Офисные диваны
-                    li.showroom-card__item Бухгалтерские шкафы
+                    li.showroom-card__item Сопутствующие товары
               
               .showroom-card__gallery.flex.align-center
                 figure.showroom-card__gallery-item
-                  img.showroom-card__image(src="static/images/showroom-auto-1.png" alt="Шоурум Автозаводская - интерьер")
-                
+                  a.showroom-card__gallery-link(data-fancybox, data-src='static/images/showroom-auto-1.png')
+                    img.showroom-card__image(src="static/images/showroom-auto-1.png" alt="Шоурум Автозаводская - интерьер")
                 figure.showroom-card__gallery-item
-                  img.showroom-card__image(src="static/images/showroom-auto-2.png" alt="Шоурум Автозаводская - интерьер")
-                
+                  a.showroom-card__gallery-link(data-fancybox, data-src='static/images/showroom-auto-2.png')
+                    img.showroom-card__image(src="static/images/showroom-auto-2.png" alt="Шоурум Автозаводская - интерьер")
                 figure.showroom-card__gallery-item
-                  img.showroom-card__image(src="static/images/showroom-auto-3.png" alt="Шоурум Автозаводская - интерьер")
-                
+                  a.showroom-card__gallery-link(data-fancybox, data-src='static/images/showroom-auto-3.png')
+                    img.showroom-card__image(src="static/images/showroom-auto-3.png" alt="Шоурум Автозаводская - интерьер")
                 figure.showroom-card__gallery-item
-                  img.showroom-card__image(src="static/images/showroom-auto-4.png" alt="Шоурум Автозаводская - интерьер")
-              
+                  a.showroom-card__gallery-link(data-fancybox, data-src='static/images/showroom-auto-4.png')
+                    img.showroom-card__image(src="static/images/showroom-auto-4.png" alt="Шоурум Автозаводская - интерьер")
+
               .showroom-card__action
                 a.button.button--primary(href="#appointment") Записаться в шоурум
       
@@ -136,16 +265,17 @@ html(lang="ru")
               
               .showroom-card__gallery.flex.align-center
                 figure.showroom-card__gallery-item
-                  img.showroom-card__image(src="static/images/showroom-auto-1.png" alt="Шоурум Москва СИТИ - интерьер")
-                
+                  a.showroom-card__gallery-link(data-fancybox, data-src='static/images/showroom-auto-1.png')
+                    img.showroom-card__image(src="static/images/showroom-auto-1.png" alt="Шоурум Автозаводская - интерьер")
                 figure.showroom-card__gallery-item
-                  img.showroom-card__image(src="static/images/showroom-auto-2.png" alt="Шоурум Москва СИТИ - интерьер")
-                
+                  a.showroom-card__gallery-link(data-fancybox, data-src='static/images/showroom-auto-2.png')
+                    img.showroom-card__image(src="static/images/showroom-auto-2.png" alt="Шоурум Автозаводская - интерьер")
                 figure.showroom-card__gallery-item
-                  img.showroom-card__image(src="static/images/showroom-auto-3.png" alt="Шоурум Москва СИТИ - интерьер")
-                
+                  a.showroom-card__gallery-link(data-fancybox, data-src='static/images/showroom-auto-3.png')
+                    img.showroom-card__image(src="static/images/showroom-auto-3.png" alt="Шоурум Автозаводская - интерьер")
                 figure.showroom-card__gallery-item
-                  img.showroom-card__image(src="static/images/showroom-auto-4.png" alt="Шоурум Москва СИТИ - интерьер")
+                  a.showroom-card__gallery-link(data-fancybox, data-src='static/images/showroom-auto-4.png')
+                    img.showroom-card__image(src="static/images/showroom-auto-4.png" alt="Шоурум Автозаводская - интерьер")
               
               .showroom-card__action
                 a.button.button--primary(href="#appointment") Записаться в шоурум
@@ -178,16 +308,17 @@ html(lang="ru")
                 
               .showroom-card__gallery.flex.align-center
                 figure.showroom-card__gallery-item
-                  img.showroom-card__image(src="static/images/showroom-auto-1.png" alt="Шоурум в ТЦ ROOMER - интерьер")
-                
+                  a.showroom-card__gallery-link(data-fancybox, data-src='static/images/showroom-auto-1.png')
+                    img.showroom-card__image(src="static/images/showroom-auto-1.png" alt="Шоурум Автозаводская - интерьер")
                 figure.showroom-card__gallery-item
-                  img.showroom-card__image(src="static/images/showroom-auto-2.png" alt="Шоурум в ТЦ ROOMER - интерьер")
-                
+                  a.showroom-card__gallery-link(data-fancybox, data-src='static/images/showroom-auto-2.png')
+                    img.showroom-card__image(src="static/images/showroom-auto-2.png" alt="Шоурум Автозаводская - интерьер")
                 figure.showroom-card__gallery-item
-                  img.showroom-card__image(src="static/images/showroom-auto-3.png" alt="Шоурум в ТЦ ROOMER - интерьер")
-                
+                  a.showroom-card__gallery-link(data-fancybox, data-src='static/images/showroom-auto-3.png')
+                    img.showroom-card__image(src="static/images/showroom-auto-3.png" alt="Шоурум Автозаводская - интерьер")
                 figure.showroom-card__gallery-item
-                  img.showroom-card__image(src="static/images/showroom-auto-4.png" alt="Шоурум в ТЦ ROOMER - интерьер")
+                  a.showroom-card__gallery-link(data-fancybox, data-src='static/images/showroom-auto-4.png')
+                    img.showroom-card__image(src="static/images/showroom-auto-4.png" alt="Шоурум Автозаводская - интерьер")
               
               .showroom-card__action
                 a.button.button--primary(href="#appointment") Записаться в шоурум
@@ -352,5 +483,5 @@ html(lang="ru")
           p.footer__copyright © 2004-2024 Компания «Prime Wood» - офисная мебель в Москве
           p.footer__rights Все права защищены, информация является собственностью Prime Wood, не является публичной офертой.
           p.footer__policy Вы соглашаетесь с условиями политики в отношении обработки персональных данных и пользовательского соглашения (смайлик чел, который надел очки и читает) при любой форме обращения на сайте.
-
+    script(src="static/js/vendor.min.js")
     script(src="static/js/main.min.js")

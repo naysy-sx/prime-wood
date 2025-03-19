@@ -61,11 +61,16 @@ export function html() {
 
 // Обработка CSS-файлов
 export function cssVendor() {
-  return gulp.src(paths.src.css)
+  return gulp.src([
+    './src/css/aos.css',
+    './src/css/fancybox.css', 
+    './src/css/reset.css',
+    './src/css/swiper-bundle.min.css'
+  ])
     .pipe(plumber({ errorHandler: notify.onError("Ошибка в CSS: <%= error.message %>") }))
     .pipe(postcss([autoprefixer()]))
-    .pipe(cleanCSS())
     .pipe(concat('vendor.min.css'))
+    .pipe(cleanCSS())
     .pipe(gulp.dest(paths.dist.css))
     .pipe(server.stream());
 }
@@ -84,12 +89,26 @@ export function scss() {
 
 // Обработка JavaScript
 export function js() {
-  return gulp.src(['node_modules/jquery/dist/jquery.min.js', paths.src.js])
+  const vendorJs = gulp.src([
+    'node_modules/jquery/dist/jquery.min.js',
+    './src/js/aos.js',
+    './src/js/fancybox.umd.js',
+    './src/js/swiper-bundle.min.js'
+  ])
+    .pipe(plumber({ errorHandler: notify.onError("Ошибка в JS вендорах: <%= error.message %>") }))
+    .pipe(concat('vendor.min.js'))
+    .pipe(gulp.dest(paths.dist.js))
+    .pipe(server.stream());
+
+  // Собственные скрипты
+  const mainJs = gulp.src('./src/js/main.js')
     .pipe(plumber({ errorHandler: notify.onError("Ошибка в JS: <%= error.message %>") }))
     .pipe(concat('main.min.js'))
     .pipe(terser())
     .pipe(gulp.dest(paths.dist.js))
     .pipe(server.stream());
+
+  return Promise.all([vendorJs, mainJs]);
 }
 
 // Копирование шрифтов
